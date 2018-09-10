@@ -1,4 +1,6 @@
 # MVP Android Template in Kotlin
+[![Build Status](https://travis-ci.org/gauravk95/mvp-kotlin-android.svg?branch=master)](https://travis-ci.org/gauravk95/mvp-kotlin-android)
+
 A MVP Android Template to give you a Head Start for your next Android Project, written in Kotlin. It contains the boilerplate code to quickly setup your project for MVP Architecture using industry standard practices and popular libraries like RxJava, Dagger, Retrofit and Room.
 
 ![Sample](https://raw.githubusercontent.com/gauravk95/mvp-android-template/master/sample.gif)
