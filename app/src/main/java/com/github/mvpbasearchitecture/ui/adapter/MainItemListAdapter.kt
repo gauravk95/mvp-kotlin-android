@@ -43,9 +43,9 @@ class MainItemListAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = mItems[position]
-        holder.id.text = item.itemId
-        holder.name.text = item.itemName
-        GeneralUtils.loadImageFromLink(mContext, holder.image, item.itemImageLink!!)
+        holder.id.text = item.id
+        holder.name.text = item.name
+        GeneralUtils.loadImageFromLink(mContext, holder.image, item.imageLink!!)
     }
 
     override fun getItemCount(): Int {

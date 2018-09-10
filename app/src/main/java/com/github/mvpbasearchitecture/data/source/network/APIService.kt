@@ -28,7 +28,7 @@ import retrofit2.http.GET
 
 interface APIService {
 
-    @GET("getItemList")
+    @GET("itemList")
     fun getItemList(): Flowable<ResponseItemHolder>
 
 }

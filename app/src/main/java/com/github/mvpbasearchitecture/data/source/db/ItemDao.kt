@@ -41,7 +41,7 @@ interface ItemDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMultipleItem(itemList: List<Item>)
 
-    @Query("SELECT * FROM Item WHERE item_id = :itemId")
+    @Query("SELECT * FROM Item WHERE id = :itemId")
     fun fetchItemByItemId(itemId: Int): Flowable<Item>
 
     @Query("SELECT * FROM Item")

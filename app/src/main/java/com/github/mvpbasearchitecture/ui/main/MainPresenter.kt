@@ -17,6 +17,7 @@ package com.github.mvpbasearchitecture.ui.main
 
 import com.github.mvpbasearchitecture.R
 import com.github.mvpbasearchitecture.base.BasePresenter
+import com.github.mvpbasearchitecture.data.models.local.Item
 import com.github.mvpbasearchitecture.data.source.repository.AppRepository
 import com.github.mvpbasearchitecture.utils.rx.SchedulerProvider
 
@@ -55,7 +56,7 @@ constructor(appRepository: AppRepository,
         mDisposable = dataSource.getItemList()
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
-                .subscribe({ items ->
+                .subscribe({ items: List<Item> ->
                     if (!isViewAttached)
                         return@subscribe
 
@@ -64,7 +65,7 @@ constructor(appRepository: AppRepository,
                         view?.refreshItemList(items)
                     else
                         view?.showEmptyListUI()
-                }, { throwable ->
+                }, { throwable: Throwable? ->
                     if (!isViewAttached)
                         return@subscribe
 

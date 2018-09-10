@@ -38,7 +38,7 @@ constructor(private val mNetworkAPIs: NetworkAPIs) : AppDataSource {
     override fun getItemList(): Flowable<List<Item>> {
         return mNetworkAPIs.getAPIService()
                 .getItemList()
-                .map(ResponseItemHolder::items)
+                .map { t: ResponseItemHolder -> t.itemList}
     }
 
     override fun updateItemList(items: List<Item>) {

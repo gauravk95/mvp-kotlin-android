@@ -2,34 +2,34 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "2da692e07d6a9b4a3637be0a1105e258",
+    "identityHash": "c0cd487a350def493a66d82df5f0421f",
     "entities": [
       {
         "tableName": "item",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`item_id` TEXT NOT NULL, `item_name` TEXT NOT NULL, `item_image_link` TEXT, PRIMARY KEY(`item_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `imageLink` TEXT, PRIMARY KEY(`id`))",
         "fields": [
           {
-            "fieldPath": "itemId",
-            "columnName": "item_id",
+            "fieldPath": "id",
+            "columnName": "id",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "itemName",
-            "columnName": "item_name",
+            "fieldPath": "name",
+            "columnName": "name",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "itemImageLink",
-            "columnName": "item_image_link",
+            "fieldPath": "imageLink",
+            "columnName": "imageLink",
             "affinity": "TEXT",
             "notNull": false
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "item_id"
+            "id"
           ],
           "autoGenerate": false
         },
@@ -39,7 +39,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"2da692e07d6a9b4a3637be0a1105e258\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c0cd487a350def493a66d82df5f0421f\")"
     ]
   }
 }

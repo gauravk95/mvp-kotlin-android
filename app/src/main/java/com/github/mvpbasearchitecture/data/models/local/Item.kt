@@ -15,12 +15,8 @@
 */
 package com.github.mvpbasearchitecture.data.models.local
 
-import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
-
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
 
 /**
  * Describes the data to be modeled
@@ -34,17 +30,6 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "item")
 data class Item(
         @field:PrimaryKey
-        @field:ColumnInfo(name = "item_id")
-        @field:SerializedName("id")
-        @field:Expose
-        var itemId: String,
-
-        @field:ColumnInfo(name = "item_name")
-        @field:SerializedName("name")
-        @field:Expose
-        var itemName: String,
-
-        @field:ColumnInfo(name = "item_image_link")
-        @field:SerializedName("imageLink")
-        @field:Expose
-        var itemImageLink: String?)
+        var id: String,
+        var name: String,
+        var imageLink: String?)

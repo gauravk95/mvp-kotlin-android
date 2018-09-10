@@ -16,8 +16,6 @@
 package com.github.mvpbasearchitecture.data.models.remote
 
 import com.github.mvpbasearchitecture.data.models.local.Item
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
 
 import java.io.Serializable
 import java.util.ArrayList
@@ -28,7 +26,4 @@ import java.util.ArrayList
  * Created by gk
  */
 
-data class ResponseItemHolder(
-        @field:SerializedName("getItemList")
-        @field:Expose
-        val items: ArrayList<Item>) : Serializable
+data class ResponseItemHolder(val itemList: ArrayList<Item>) : Serializable
