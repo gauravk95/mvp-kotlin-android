@@ -32,7 +32,7 @@ import io.reactivex.Flowable
 class AppLocalDataSource @Inject
 constructor(mDatabase: AppDatabase) : AppDataSource {
 
-    private val mItemDao: ItemDao = mDatabase.musicDao()
+    private val mItemDao: ItemDao = mDatabase.itemDao()
 
     override fun getItemList(): Flowable<List<Item>> {
         return mItemDao.fetchItems()

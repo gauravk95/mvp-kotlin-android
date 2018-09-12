@@ -27,6 +27,6 @@ import com.github.mvpbasearchitecture.data.models.local.Item
 @Database(entities = [Item::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun musicDao(): ItemDao
+    abstract fun itemDao(): ItemDao
 
 }
