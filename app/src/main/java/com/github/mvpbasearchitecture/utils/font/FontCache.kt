@@ -26,24 +26,21 @@ import java.util.Hashtable
  * Created by gk
  */
 
-class FontCache {
+object FontCache {
 
-    companion object {
-        private val fontCache = Hashtable<String, Typeface>()
+    private val fontCache = Hashtable<String, Typeface>()
 
-        fun get(name: String, context: Context): Typeface? {
-            var tf: Typeface? = fontCache[name]
-            if (tf == null) {
-                try {
-                    tf = Typeface.createFromAsset(context.assets, name)
-                } catch (e: Exception) {
-                    return null
-                }
-
-                fontCache[name] = tf
+    fun get(name: String, context: Context): Typeface? {
+        var tf: Typeface? = fontCache[name]
+        if (tf == null) {
+            try {
+                tf = Typeface.createFromAsset(context.assets, name)
+            } catch (e: Exception) {
+                return null
             }
-            return tf
-        }
-    }
 
+            fontCache[name] = tf
+        }
+        return tf
+    }
 }

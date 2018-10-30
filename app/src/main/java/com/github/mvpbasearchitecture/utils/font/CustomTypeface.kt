@@ -28,28 +28,25 @@ import java.util.Hashtable
  * Created by gk
  */
 
-class CustomTypeface {
+object CustomTypeface {
 
-    companion object {
-        private const val TAG = "TypefaceHelper"
+    private const val TAG = "TypefaceHelper"
 
-        private val cache = Hashtable<String, Typeface>()
+    private val cache = Hashtable<String, Typeface>()
 
-        operator fun get(am: AssetManager, assetPath: String): Typeface? {
-            if (!cache.containsKey(assetPath)) {
-                try {
-                    val t = Typeface.createFromAsset(am,
-                            assetPath)
-                    cache[assetPath] = t
-                } catch (e: Exception) {
-                    AppLogger.e(TAG, "Could not get typeface '" + assetPath
-                            + "' because " + e.message)
-                    return null
-                }
-
+    operator fun get(am: AssetManager, assetPath: String): Typeface? {
+        if (!cache.containsKey(assetPath)) {
+            try {
+                val t = Typeface.createFromAsset(am,
+                        assetPath)
+                cache[assetPath] = t
+            } catch (e: Exception) {
+                AppLogger.e(TAG, "Could not get typeface '" + assetPath
+                        + "' because " + e.message)
+                return null
             }
-            return cache[assetPath]
-        }
-    }
 
+        }
+        return cache[assetPath]
+    }
 }

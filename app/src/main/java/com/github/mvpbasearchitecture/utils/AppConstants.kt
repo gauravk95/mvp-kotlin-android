@@ -22,11 +22,7 @@ package com.github.mvpbasearchitecture.utils
  *
  * Created by gk
  */
-class AppConstants {
-
-    companion object {
-        const val DB_NAME = "app.db"
-        const val PREF_NAME = "app_pref"
-    }
-
+object AppConstants {
+    const val DB_NAME = "app.db"
+    const val PREF_NAME = "app_pref"
 }

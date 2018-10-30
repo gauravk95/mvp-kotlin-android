@@ -33,7 +33,7 @@ import com.github.mvpbasearchitecture.utils.ext.loadImageFromLink
  * Created by gk
  */
 class MainItemListAdapter(
-        private val context: Context,
+        private val context: Context?,
         private val items: List<Item>) :
         RecyclerView.Adapter<MainItemListAdapter.MyViewHolder>() {
 

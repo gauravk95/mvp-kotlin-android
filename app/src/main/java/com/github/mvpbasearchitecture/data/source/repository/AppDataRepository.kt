@@ -86,7 +86,7 @@ constructor(@param:Remote private val remoteAppDataSource: AppDataSource,
     override fun getItemList(): Flowable<List<Item>> {
         // Respond immediately with cache if available and not dirty
         if (cachedItemList != null && !cacheIsDirty) {
-            return Flowable.just(cachedItemList!!)
+            return Flowable.just(cachedItemList)
         }
 
         //if cache is dirty, get the data from server

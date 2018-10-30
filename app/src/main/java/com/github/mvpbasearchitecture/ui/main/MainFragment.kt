@@ -72,7 +72,7 @@ class MainFragment : BaseMVPFragment<MainContract.Presenter>(), MainContract.Vie
         empty_list_text.toGone()
 
         val linearLayoutManager = LinearLayoutManager(context)
-        val itemAdapter = MainItemListAdapter(context!!, itemList)
+        val itemAdapter = MainItemListAdapter(context, itemList)
 
         item_recycler_view.layoutManager = linearLayoutManager
         item_recycler_view.adapter = itemAdapter
