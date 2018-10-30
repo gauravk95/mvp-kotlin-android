@@ -40,27 +40,27 @@ class ActivityModule(private val activity: AppCompatActivity) {
 
     @Provides
     @ActivityContext
-    internal fun provideContext(): Context {
+    fun provideContext(): Context {
         return activity
     }
 
     @Provides
-    internal fun provideActivity(): AppCompatActivity {
+    fun provideActivity(): AppCompatActivity {
         return activity
     }
 
     @Provides
-    internal fun provideCompositeDisposable(): CompositeDisposable {
+    fun provideCompositeDisposable(): CompositeDisposable {
         return CompositeDisposable()
     }
 
     @Provides
-    internal fun provideSchedulerProvider(): SchedulerProvider {
+    fun provideSchedulerProvider(): SchedulerProvider {
         return AppSchedulerProvider()
     }
 
     @Provides
-    internal fun provideMainPresenter(appRepository: AppRepository,
+    fun provideMainPresenter(appRepository: AppRepository,
                                       schedulerProvider: SchedulerProvider,
                                       compositeDisposable: CompositeDisposable): MainContract.Presenter {
         return MainPresenter(appRepository, schedulerProvider, compositeDisposable)

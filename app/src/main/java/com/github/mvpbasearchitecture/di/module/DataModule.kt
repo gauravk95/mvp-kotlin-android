@@ -47,46 +47,46 @@ class DataModule {
     @Provides
     @Singleton
     @DatabaseInfo
-    internal fun provideDatabaseName(): String {
+    fun provideDatabaseName(): String {
         return AppConstants.DB_NAME
     }
 
     @Provides
     @Singleton
     @PreferenceInfo
-    internal fun providePreferenceName(): String {
+    fun providePreferenceName(): String {
         return AppConstants.PREF_NAME
     }
 
     @Provides
     @Singleton
     @Local
-    internal fun provideAppLocalDataSource(appLocalDataSource: AppLocalDataSource): AppDataSource {
+    fun provideAppLocalDataSource(appLocalDataSource: AppLocalDataSource): AppDataSource {
         return appLocalDataSource
     }
 
     @Provides
     @Singleton
     @Remote
-    internal fun provideAppRemoteDataSource(appRemoteDataSource: AppRemoteDataSource): AppDataSource {
+    fun provideAppRemoteDataSource(appRemoteDataSource: AppRemoteDataSource): AppDataSource {
         return appRemoteDataSource
     }
 
     @Provides
     @Singleton
-    internal fun provideAppRepository(dataRepository: AppDataRepository): AppRepository {
+    fun provideAppRepository(dataRepository: AppDataRepository): AppRepository {
         return dataRepository
     }
 
     @Provides
     @Singleton
-    internal fun provideAppDb(appDbOpenHelper: AppDbOpenHelper): AppDatabase {
+    fun provideAppDb(appDbOpenHelper: AppDbOpenHelper): AppDatabase {
         return appDbOpenHelper.database
     }
 
     @Provides
     @Singleton
-    internal fun providePreferencesHelper(appPreferences: AppPreferences): Preferences {
+    fun providePreferencesHelper(appPreferences: AppPreferences): Preferences {
         return appPreferences
     }
 

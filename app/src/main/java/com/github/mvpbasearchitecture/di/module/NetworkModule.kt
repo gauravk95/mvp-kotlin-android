@@ -44,7 +44,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    internal fun provideCall(): Retrofit {
+    fun provideCall(): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
                 .client(NetworkUtils.httpClient)
@@ -55,13 +55,13 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    internal fun providesNetworkService(retrofit: Retrofit): APIService {
+    fun providesNetworkService(retrofit: Retrofit): APIService {
         return retrofit.create(APIService::class.java)
     }
 
     @Provides
     @Singleton
-    internal fun providesRetrofitHelper(apiHelper: APIHelper): NetworkAPIs {
+    fun providesRetrofitHelper(apiHelper: APIHelper): NetworkAPIs {
         return apiHelper
     }
 

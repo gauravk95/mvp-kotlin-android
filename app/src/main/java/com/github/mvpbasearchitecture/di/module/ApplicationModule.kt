@@ -34,12 +34,12 @@ class ApplicationModule(private val application: Application) {
 
     @Provides
     @ApplicationContext
-    internal fun provideContext(): Context {
+    fun provideContext(): Context {
         return application
     }
 
     @Provides
-    internal fun provideApplication(): Application {
+    fun provideApplication(): Application {
         return application
     }
 
