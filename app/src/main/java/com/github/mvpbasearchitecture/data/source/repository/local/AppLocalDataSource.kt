@@ -30,15 +30,15 @@ import io.reactivex.Flowable
  */
 @Singleton
 class AppLocalDataSource @Inject
-constructor(mDatabase: AppDatabase) : AppDataSource {
+constructor(database: AppDatabase) : AppDataSource {
 
-    private val mItemDao: ItemDao = mDatabase.itemDao()
+    private val itemDao: ItemDao = database.itemDao()
 
     override fun getItemList(): Flowable<List<Item>> {
-        return mItemDao.fetchItems()
+        return itemDao.fetchItems()
     }
 
     override fun updateItemList(items: List<Item>) {
-        mItemDao.insertMultipleItem(items)
+        itemDao.insertMultipleItem(items)
     }
 }

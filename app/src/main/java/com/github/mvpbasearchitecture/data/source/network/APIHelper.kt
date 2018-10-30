@@ -26,9 +26,9 @@ import javax.inject.Singleton
 
 @Singleton
 class APIHelper @Inject
-constructor(private val mAPIService: APIService) : NetworkAPIs {
+constructor(private val apiService: APIService) : NetworkAPIs {
 
     override fun getAPIService(): APIService {
-        return mAPIService
+        return apiService
     }
 }

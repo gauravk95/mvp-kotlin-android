@@ -40,7 +40,7 @@ class MainActivity : BaseActivity() {
 
         val mainFragment: MainFragment? = findFragmentById(R.id.content_frame)
         if (mainFragment == null)
-           setFragment( MainFragment.newInstance(), R.id.content_frame)
+           setFragment(MainFragment.newInstance(), R.id.content_frame)
 
     }
 

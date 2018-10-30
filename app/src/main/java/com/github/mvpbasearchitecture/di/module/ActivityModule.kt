@@ -18,7 +18,6 @@ package com.github.mvpbasearchitecture.di.module
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 
-import com.github.mvpbasearchitecture.data.source.repository.AppDataSource
 import com.github.mvpbasearchitecture.data.source.repository.AppRepository
 import com.github.mvpbasearchitecture.di.ActivityContext
 import com.github.mvpbasearchitecture.ui.main.MainContract
@@ -37,17 +36,17 @@ import io.reactivex.disposables.CompositeDisposable
  */
 
 @Module
-class ActivityModule(private val mActivity: AppCompatActivity) {
+class ActivityModule(private val activity: AppCompatActivity) {
 
     @Provides
     @ActivityContext
     internal fun provideContext(): Context {
-        return mActivity
+        return activity
     }
 
     @Provides
     internal fun provideActivity(): AppCompatActivity {
-        return mActivity
+        return activity
     }
 
     @Provides

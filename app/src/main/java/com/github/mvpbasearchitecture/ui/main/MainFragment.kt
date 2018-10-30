@@ -44,7 +44,7 @@ class MainFragment : BaseMVPFragment<MainContract.Presenter>(), MainContract.Vie
     private lateinit var inflatedView: View
 
     @Inject
-    lateinit var mPresenter: MainContract.Presenter
+    lateinit var mainPresenter: MainContract.Presenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         this.inflatedView = inflater.inflate(R.layout.fragment_main, container, false)
@@ -58,13 +58,13 @@ class MainFragment : BaseMVPFragment<MainContract.Presenter>(), MainContract.Vie
 
         val component = activityComponent
         component.inject(this)
-        mPresenter.onAttach(this)
+        mainPresenter.onAttach(this)
 
-        mPresenter.loadItems(false)
+        mainPresenter.loadItems(false)
     }
 
     private fun setupListeners() {
-        refresh_item_btn.setOnClickListener { mPresenter.loadItems(true) }
+        refresh_item_btn.setOnClickListener { mainPresenter.loadItems(true) }
     }
 
     override fun refreshItemList(itemList: List<Item>) {
@@ -84,11 +84,11 @@ class MainFragment : BaseMVPFragment<MainContract.Presenter>(), MainContract.Vie
     }
 
     override fun setPresenter(presenter: MainContract.Presenter) {
-        this.mPresenter = presenter
+        this.mainPresenter = presenter
     }
 
     override fun onDestroy() {
-        mPresenter.onDetach()
+        mainPresenter.onDetach()
         super.onDestroy()
     }
 

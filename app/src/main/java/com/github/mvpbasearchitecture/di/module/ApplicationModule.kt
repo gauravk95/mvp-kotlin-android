@@ -18,12 +18,7 @@ package com.github.mvpbasearchitecture.di.module
 import android.app.Application
 import android.content.Context
 
-import com.github.mvpbasearchitecture.data.source.repository.AppDataRepository
-import com.github.mvpbasearchitecture.data.source.repository.AppRepository
 import com.github.mvpbasearchitecture.di.ApplicationContext
-import com.github.mvpbasearchitecture.di.Remote
-
-import javax.inject.Singleton
 
 import dagger.Module
 import dagger.Provides
@@ -35,17 +30,17 @@ import dagger.Provides
  */
 
 @Module
-class ApplicationModule(private val mApplication: Application) {
+class ApplicationModule(private val application: Application) {
 
     @Provides
     @ApplicationContext
     internal fun provideContext(): Context {
-        return mApplication
+        return application
     }
 
     @Provides
     internal fun provideApplication(): Application {
-        return mApplication
+        return application
     }
 
 }

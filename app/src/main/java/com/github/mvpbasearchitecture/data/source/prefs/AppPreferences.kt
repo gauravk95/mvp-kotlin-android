@@ -44,38 +44,38 @@ class AppPreferences @Inject
 constructor(@ApplicationContext context: Context,
             @PreferenceInfo prefFileName: String) : Preferences {
 
-    private val mPrefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
+    private val spPrefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
 
     override fun getBoolean(key: String): Boolean {
-        return mPrefs.getBooleanSharedPref(key)
+        return spPrefs.getBooleanSharedPref(key)
     }
 
     override fun getLong(key: String): Long {
-        return mPrefs.getLongSharedPref(key)
+        return spPrefs.getLongSharedPref(key)
     }
 
     override fun getInt(key: String): Int {
-        return mPrefs.getIntSharedPref(key)
+        return spPrefs.getIntSharedPref(key)
     }
 
     override fun getString(key: String): String {
-        return mPrefs.getStringSharedPref(key)
+        return spPrefs.getStringSharedPref(key)
     }
 
     override fun setBoolean(key: String, value: Boolean) {
-        mPrefs.setBooleanSharedPref(key, value)
+        spPrefs.setBooleanSharedPref(key, value)
     }
 
     override fun setLong(key: String, value: Long) {
-        mPrefs.setLongSharedPref(key, value)
+        spPrefs.setLongSharedPref(key, value)
     }
 
     override fun setInt(key: String, value: Int) {
-        mPrefs.setIntSharedPref(key, value)
+        spPrefs.setIntSharedPref(key, value)
     }
 
     override fun getString(key: String, value: String) {
-        mPrefs.setStringSharedPref(key, value)
+        spPrefs.setStringSharedPref(key, value)
     }
 
 }

@@ -40,7 +40,7 @@ constructor(appRepository: AppRepository,
             BasePresenter<MainContract.View>(appRepository, schedulerProvider, compositeDisposable),
             MainContract.Presenter {
 
-    private var mDisposable: Disposable? = null
+    private var disposable: Disposable? = null
 
     override fun loadItems(refresh: Boolean) {
         view?.showProgressDialog()
@@ -49,10 +49,10 @@ constructor(appRepository: AppRepository,
             dataSource.refreshItems()
 
         //remove the previous disposable from composite disposable, for multiple load items calls
-        if (mDisposable != null)
-            compositeDisposable.delete(mDisposable!!)
+        if (disposable != null)
+            compositeDisposable.delete(disposable!!)
 
-        mDisposable = dataSource.getItemList()
+        disposable = dataSource.getItemList()
                 .subscribeOn(schedulerProvider.io)
                 .observeOn(schedulerProvider.ui)
                 .subscribe({ items: List<Item> ->
@@ -72,7 +72,7 @@ constructor(appRepository: AppRepository,
                     handleApiError(throwable)
                 })
 
-        compositeDisposable.add(mDisposable!!)
+        compositeDisposable.add(disposable!!)
     }
 
 }

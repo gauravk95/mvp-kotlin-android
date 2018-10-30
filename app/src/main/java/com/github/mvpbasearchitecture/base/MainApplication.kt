@@ -39,7 +39,7 @@ import javax.inject.Inject
 class MainApplication : Application() {
 
     @Inject
-    lateinit var mRepository: AppRepository
+    lateinit var repository: AppRepository
 
     // Needed to replace the component with a test specific one
     lateinit var component: ApplicationComponent

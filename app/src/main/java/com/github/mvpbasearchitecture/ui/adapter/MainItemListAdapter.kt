@@ -33,23 +33,23 @@ import com.github.mvpbasearchitecture.utils.ext.loadImageFromLink
  * Created by gk
  */
 class MainItemListAdapter(
-        private val mContext: Context,
-        private val mItems: List<Item>) :
+        private val context: Context,
+        private val items: List<Item>) :
         RecyclerView.Adapter<MainItemListAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_main, parent, false))
+        return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_main, parent, false))
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = mItems[position]
+        val item = items[position]
         holder.id.text = item.id
         holder.name.text = item.name
         holder.image.loadImageFromLink(item.imageLink)
     }
 
     override fun getItemCount(): Int {
-        return mItems.size
+        return items.size
     }
 
     /**

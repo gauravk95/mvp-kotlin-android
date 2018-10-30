@@ -33,10 +33,10 @@ import io.reactivex.Flowable
 
 @Singleton
 class AppRemoteDataSource @Inject
-constructor(private val mNetworkAPIs: NetworkAPIs) : AppDataSource {
+constructor(private val networkAPIs: NetworkAPIs) : AppDataSource {
 
     override fun getItemList(): Flowable<List<Item>> {
-        return mNetworkAPIs.getAPIService()
+        return networkAPIs.getAPIService()
                 .getItemList()
                 .map { t: ResponseItemHolder -> t.itemList}
     }

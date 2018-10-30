@@ -35,44 +35,44 @@ import io.reactivex.Flowable
 
 @Singleton
 class AppDataRepository @Inject
-constructor(@param:Remote private val mRemoteAppDataSource: AppDataSource,
-            @param:Local private val mLocalAppDataSource: AppDataSource,
-            private val mPreference: Preferences) : AppRepository {
+constructor(@param:Remote private val remoteAppDataSource: AppDataSource,
+            @param:Local private val localAppDataSource: AppDataSource,
+            private val preference: Preferences) : AppRepository {
 
     @VisibleForTesting
-    internal var mCachedItemList: List<Item>? = null
+    internal var cachedItemList: List<Item>? = null
 
     /**
      * Marks the cache as invalid, to force an update the next time data is requested. This variable
      * has package local visibility so it can be accessed from tests.
      */
     @VisibleForTesting
-    internal var mCacheIsDirty = false
+    internal var cacheIsDirty = false
 
     //get the items from the server
     private fun getItemFromServerDB(): Flowable<List<Item>> {
-        return mRemoteAppDataSource
+        return remoteAppDataSource
                 .getItemList()
                 .doOnNext { items ->
-                    mLocalAppDataSource.updateItemList(items)
-                    mCachedItemList = items
-                    mCacheIsDirty = false
+                    localAppDataSource.updateItemList(items)
+                    cachedItemList = items
+                    cacheIsDirty = false
                 }
     }
 
     //get the elements from local db, and if empty get it from sever
     private fun getItemFromLocalDB(): Flowable<List<Item>> {
-        return mLocalAppDataSource
+        return localAppDataSource
                 .getItemList()
                 .switchIfEmpty(getItemFromServerDB())
                 .flatMap { items ->
                     val tempItems: Flowable<List<Item>>
                     if (items.isNotEmpty()) {
-                        mCachedItemList = items
-                        mCacheIsDirty = false
+                        cachedItemList = items
+                        cacheIsDirty = false
                         tempItems = Flowable.just(items)
                     } else {
-                        mCacheIsDirty = true
+                        cacheIsDirty = true
                         tempItems = getItemFromServerDB()
                     }
                     return@flatMap tempItems
@@ -85,19 +85,19 @@ constructor(@param:Remote private val mRemoteAppDataSource: AppDataSource,
 
     override fun getItemList(): Flowable<List<Item>> {
         // Respond immediately with cache if available and not dirty
-        if (mCachedItemList != null && !mCacheIsDirty) {
-            return Flowable.just(mCachedItemList!!)
+        if (cachedItemList != null && !cacheIsDirty) {
+            return Flowable.just(cachedItemList!!)
         }
 
         //if cache is dirty, get the data from server
-        return if (mCacheIsDirty) getItemFromServerDB() else getItemFromLocalDB()
+        return if (cacheIsDirty) getItemFromServerDB() else getItemFromLocalDB()
     }
 
     override fun updateItemList(items: List<Item>) {
-        mLocalAppDataSource.updateItemList(items)
+        localAppDataSource.updateItemList(items)
     }
 
     override fun refreshItems() {
-        mCacheIsDirty = true
+        cacheIsDirty = true
     }
 }
