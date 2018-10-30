@@ -21,8 +21,9 @@ import android.view.MenuItem
 
 import com.github.mvpbasearchitecture.R
 import com.github.mvpbasearchitecture.base.BaseActivity
-import com.github.mvpbasearchitecture.utils.ActivityUtils
-import com.github.mvpbasearchitecture.utils.ViewUtils
+import com.github.mvpbasearchitecture.utils.ext.applyFontForToolbarTitle
+import com.github.mvpbasearchitecture.utils.ext.findFragmentById
+import com.github.mvpbasearchitecture.utils.ext.setFragment
 
 /**
  * The main activity the application when launched
@@ -37,11 +38,9 @@ class MainActivity : BaseActivity() {
 
         setupToolbar()
 
-        var mainFragment: MainFragment? = supportFragmentManager.findFragmentById(R.id.content_frame) as? MainFragment
-        if (mainFragment == null) {
-            mainFragment = MainFragment.newInstance()
-            ActivityUtils.addFragmentToActivity(supportFragmentManager, mainFragment, R.id.content_frame)
-        }
+        val mainFragment: MainFragment? = findFragmentById(R.id.content_frame)
+        if (mainFragment == null)
+           setFragment( MainFragment.newInstance(), R.id.content_frame)
 
     }
 
@@ -52,7 +51,7 @@ class MainActivity : BaseActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close_white)
         supportActionBar?.title = getText(R.string.toolbar_title)
 
-        ViewUtils.applyFontForToolbarTitle(this, R.id.toolbar)
+        toolbar.applyFontForToolbarTitle()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

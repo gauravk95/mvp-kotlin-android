@@ -25,7 +25,7 @@ import okhttp3.Request
  */
 object NetworkUtils {
 
-    // Adds token as a header to the OkHttpClient making the request.
+    // Adds header to the OkHttpClient making the request.
     val httpClient: OkHttpClient
         get() = OkHttpClient.Builder()
                 .addInterceptor { chain ->
@@ -39,7 +39,7 @@ object NetworkUtils {
                 }
                 .build()
 
-    // Adds token as a header to the OkHttpClient making the request.
+    // Adds header to Custom OkHttpClient[httpClient] making the request.
     fun getHttpClient(httpClient: OkHttpClient.Builder): OkHttpClient {
         httpClient.addInterceptor { chain ->
             val original = chain.request()

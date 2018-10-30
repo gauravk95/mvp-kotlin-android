@@ -23,12 +23,12 @@ import io.reactivex.Scheduler
 
 interface SchedulerProvider {
 
-    fun ui(): Scheduler
+    val ui: Scheduler
 
-    fun computation(): Scheduler
+    val computation: Scheduler
 
-    fun io(): Scheduler
+    val io: Scheduler
 
-    fun trampoline(): Scheduler
+    val trampoline: Scheduler
 
 }

@@ -30,6 +30,6 @@ import android.arch.persistence.room.PrimaryKey
 @Entity(tableName = "item")
 data class Item(
         @field:PrimaryKey
-        var id: String,
-        var name: String,
-        var imageLink: String?)
+        val id: String,
+        val name: String,
+        val imageLink: String?)

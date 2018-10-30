@@ -25,7 +25,7 @@ import android.widget.TextView
 
 import com.github.mvpbasearchitecture.R
 import com.github.mvpbasearchitecture.data.models.local.Item
-import com.github.mvpbasearchitecture.utils.GeneralUtils
+import com.github.mvpbasearchitecture.utils.ext.loadImageFromLink
 
 /**
  * Adapter that used to display [Item] in a recycler view
@@ -45,7 +45,7 @@ class MainItemListAdapter(
         val item = mItems[position]
         holder.id.text = item.id
         holder.name.text = item.name
-        GeneralUtils.loadImageFromLink(mContext, holder.image, item.imageLink!!)
+        holder.image.loadImageFromLink(item.imageLink)
     }
 
     override fun getItemCount(): Int {

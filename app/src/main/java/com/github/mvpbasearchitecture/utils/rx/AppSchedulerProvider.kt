@@ -27,19 +27,12 @@ import io.reactivex.schedulers.Schedulers
 
 class AppSchedulerProvider : SchedulerProvider {
 
-    override fun ui(): Scheduler {
-        return AndroidSchedulers.mainThread()
-    }
+    override val ui: Scheduler = AndroidSchedulers.mainThread()
 
-    override fun computation(): Scheduler {
-        return Schedulers.computation()
-    }
+    override val computation: Scheduler = Schedulers.computation()
 
-    override fun io(): Scheduler {
-        return Schedulers.io()
-    }
+    override val io: Scheduler = Schedulers.io()
 
-    override fun trampoline(): Scheduler {
-        return Schedulers.trampoline()
-    }
+    override val trampoline: Scheduler = Schedulers.trampoline()
+
 }

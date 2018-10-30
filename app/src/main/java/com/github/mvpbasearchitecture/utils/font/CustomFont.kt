@@ -27,7 +27,7 @@ import com.github.mvpbasearchitecture.R
  * Created by gk
  */
 
-object CustomFontHelper {
+object CustomFont {
 
     /**
      * Sets a font on a TextView based on the custom com.my.package:typeface attribute
@@ -49,7 +49,7 @@ object CustomFontHelper {
      * @param font
      * @param context
      */
-    fun setCustomFont(textView: TextView, tFont: String?, context: Context) {
+    private fun setCustomFont(textView: TextView, tFont: String?, context: Context) {
         var font = tFont
         if (font == null) {
             font = "fonts/OpenSans-Light.ttf"

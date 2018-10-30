@@ -16,10 +16,8 @@
 package com.github.mvpbasearchitecture.base
 
 import com.github.mvpbasearchitecture.R
-import com.github.mvpbasearchitecture.data.source.repository.AppDataSource
 import com.github.mvpbasearchitecture.data.source.repository.AppRepository
 import com.github.mvpbasearchitecture.data.source.network.NetworkError
-import com.github.mvpbasearchitecture.utils.GeneralUtils
 import com.github.mvpbasearchitecture.utils.rx.SchedulerProvider
 
 import io.reactivex.disposables.CompositeDisposable
@@ -60,7 +58,7 @@ abstract class BasePresenter<V : BaseContract.View<*>>(
 
         val networkError = NetworkError(throwable)
         val errorMsg = networkError.appErrorMessage
-        if (GeneralUtils.checkStringNotEmpty(errorMsg))
+        if (!errorMsg.isEmpty())
             view?.onError(errorMsg)
         else
             view?.onError(R.string.default_error_message)

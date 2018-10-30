@@ -30,8 +30,7 @@ import com.github.mvpbasearchitecture.R
 import com.github.mvpbasearchitecture.di.component.ActivityComponent
 import com.github.mvpbasearchitecture.di.component.DaggerActivityComponent
 import com.github.mvpbasearchitecture.di.module.ActivityModule
-import com.github.mvpbasearchitecture.utils.DialogUtils
-import com.github.mvpbasearchitecture.utils.GeneralUtils
+import com.github.mvpbasearchitecture.utils.ext.createProgressDialog
 
 /**
  * Acts a Base Activity class for all other activities which will act as View part of MVP
@@ -42,7 +41,7 @@ import com.github.mvpbasearchitecture.utils.GeneralUtils
 
 abstract class BaseMVPActivity<T> : AppCompatActivity(), BaseContract.View<T> {
 
-    protected var progressDialog: Dialog? = null
+    private var progressDialog: Dialog? = null
     lateinit var activityComponent: ActivityComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +61,7 @@ abstract class BaseMVPActivity<T> : AppCompatActivity(), BaseContract.View<T> {
      * Custom Progress Dialog
      */
     override fun showProgressDialog() {
-        progressDialog = DialogUtils.createProgressDialog(this@BaseMVPActivity)
+        progressDialog = createProgressDialog()
     }
 
     override fun dismissProgressDialog() {
@@ -70,7 +69,7 @@ abstract class BaseMVPActivity<T> : AppCompatActivity(), BaseContract.View<T> {
     }
 
     override fun showToastMessage(message: String?) {
-        if (GeneralUtils.checkStringNotEmpty(message))
+        if (!message.isNullOrEmpty())
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
@@ -79,7 +78,7 @@ abstract class BaseMVPActivity<T> : AppCompatActivity(), BaseContract.View<T> {
     }
 
     override fun showSnackBarMessage(message: String?) {
-        if (GeneralUtils.checkStringNotEmpty(message))
+        if (!message.isNullOrEmpty())
             showSnackBar(message)
     }
 

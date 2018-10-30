@@ -17,7 +17,6 @@ package com.github.mvpbasearchitecture.base
 
 import android.app.Dialog
 import android.content.Context
-import android.os.Bundle
 import android.support.annotation.StringRes
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
@@ -28,8 +27,7 @@ import android.widget.Toast
 
 import com.github.mvpbasearchitecture.R
 import com.github.mvpbasearchitecture.di.component.ActivityComponent
-import com.github.mvpbasearchitecture.utils.DialogUtils
-import com.github.mvpbasearchitecture.utils.GeneralUtils
+import com.github.mvpbasearchitecture.utils.ext.createProgressDialog
 
 /**
  * Acts a Base Fragment class for all other [Fragment] which will act as View part of MVP
@@ -40,24 +38,22 @@ import com.github.mvpbasearchitecture.utils.GeneralUtils
 
 abstract class BaseMVPFragment<T> : Fragment(), BaseContract.View<T> {
 
-    protected var progressDialog: Dialog? = null
-    protected var mActivity: BaseActivity? = null
+    private var progressDialog: Dialog? = null
 
     protected lateinit var activityComponent: ActivityComponent
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (context is BaseActivity) {
-            this.mActivity = context
-            this.activityComponent = (mActivity as BaseActivity).activityComponent
+            this.activityComponent = context.activityComponent
         }
     }
 
     /**
-     * Custom Progress Dialog with loading dots animation
+     * Custom Progress Dialog
      */
     override fun showProgressDialog() {
-        progressDialog = DialogUtils.createProgressDialog(context!!)
+        progressDialog = createProgressDialog()
     }
 
     override fun dismissProgressDialog() {
@@ -65,7 +61,7 @@ abstract class BaseMVPFragment<T> : Fragment(), BaseContract.View<T> {
     }
 
     override fun showToastMessage(message: String?) {
-        if (GeneralUtils.checkStringNotEmpty(message))
+        if (!message.isNullOrEmpty())
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
@@ -74,7 +70,7 @@ abstract class BaseMVPFragment<T> : Fragment(), BaseContract.View<T> {
     }
 
     override fun showSnackBarMessage(message: String?) {
-        if (GeneralUtils.checkStringNotEmpty(message))
+        if (!message.isNullOrEmpty())
             showSnackBar(message)
     }
 

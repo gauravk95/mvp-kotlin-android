@@ -18,13 +18,15 @@ package com.github.mvpbasearchitecture.utils
 /**
  * Constants that will be used through the app
  *
+ * NOTE: use @JvmField] if using java with kotlin to avoid [AppConstants.INSTANCE.<name_access>]
+ *
  * Created by gk
  */
+class AppConstants {
 
-object AppConstants {
+    companion object {
+        const val DB_NAME = "app.db"
+        const val PREF_NAME = "app_pref"
+    }
 
-    const val DB_NAME = "app.db"
-    const val PREF_NAME = "app_pref"
-
-    const val NETWORK_TIMEOUT_IN_SEC: Long = 30
 }

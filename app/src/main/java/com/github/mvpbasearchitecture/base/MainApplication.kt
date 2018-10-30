@@ -63,7 +63,7 @@ class MainApplication : Application() {
 
     // Here we do one-off initialisation which should apply to all activities
     // in the application.
-    protected fun initializeInstance() {
+    private fun initializeInstance() {
         //globally initialize the App Logger
         AppLogger.init()
     }

@@ -25,6 +25,8 @@ import com.github.mvpbasearchitecture.R
 import com.github.mvpbasearchitecture.base.BaseMVPFragment
 import com.github.mvpbasearchitecture.data.models.local.Item
 import com.github.mvpbasearchitecture.ui.adapter.MainItemListAdapter
+import com.github.mvpbasearchitecture.utils.ext.toGone
+import com.github.mvpbasearchitecture.utils.ext.toVisible
 
 import kotlinx.android.synthetic.main.fragment_main.*
 
@@ -39,7 +41,7 @@ import javax.inject.Inject
  */
 class MainFragment : BaseMVPFragment<MainContract.Presenter>(), MainContract.View {
 
-    private var inflatedView: View? = null
+    private lateinit var inflatedView: View
 
     @Inject
     lateinit var mPresenter: MainContract.Presenter
@@ -66,8 +68,8 @@ class MainFragment : BaseMVPFragment<MainContract.Presenter>(), MainContract.Vie
     }
 
     override fun refreshItemList(itemList: List<Item>) {
-        item_recycler_view.visibility = View.VISIBLE
-        empty_list_text.visibility = View.GONE
+        item_recycler_view.toVisible()
+        empty_list_text.toGone()
 
         val linearLayoutManager = LinearLayoutManager(context)
         val itemAdapter = MainItemListAdapter(context!!, itemList)
@@ -77,8 +79,8 @@ class MainFragment : BaseMVPFragment<MainContract.Presenter>(), MainContract.Vie
     }
 
     override fun showEmptyListUI() {
-        item_recycler_view.visibility = View.GONE
-        empty_list_text.visibility = View.VISIBLE
+        item_recycler_view.toGone()
+        empty_list_text.toVisible()
     }
 
     override fun setPresenter(presenter: MainContract.Presenter) {

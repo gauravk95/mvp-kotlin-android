@@ -108,9 +108,9 @@ class NetworkError : Throwable {
     }
 
     companion object {
-        val DEFAULT_ERROR_MESSAGE = "Something went wrong! Please try again."
-        val NETWORK_ERROR_MESSAGE = "No Internet Connection!"
-        private val ERROR_MESSAGE_HEADER = "NetworkError-Message"
-        private val BAD_REQUEST_MESSAGE = "This operation is not allowed!"
+        private const val DEFAULT_ERROR_MESSAGE = "Something went wrong! Please try again."
+        private const val NETWORK_ERROR_MESSAGE = "No Internet Connection!"
+        private const val ERROR_MESSAGE_HEADER = "NetworkError-Message"
+        private const val BAD_REQUEST_MESSAGE = "This operation is not allowed!"
     }
 }

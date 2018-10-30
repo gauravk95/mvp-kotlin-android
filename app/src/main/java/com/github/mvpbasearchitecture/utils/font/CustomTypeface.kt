@@ -28,8 +28,9 @@ import java.util.Hashtable
  * Created by gk
  */
 
-object TypefaceHelper {
-    private val TAG = "TypefaceHelper"
+object CustomTypeface {
+
+    private const val TAG = "TypefaceHelper"
 
     private val cache = Hashtable<String, Typeface>()
 

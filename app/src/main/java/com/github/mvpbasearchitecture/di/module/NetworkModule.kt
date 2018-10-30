@@ -42,41 +42,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 class NetworkModule {
 
-    private var client: OkHttpClient.Builder? = null
-
-    constructor()
-
-    constructor(client: OkHttpClient.Builder) {
-        this.client = client
-    }
-
     @Provides
     @Singleton
     internal fun provideCall(): Retrofit {
-        val retrofit: Retrofit
-        if (client == null) {
-            client = OkHttpClient.Builder()
-                    .connectTimeout(AppConstants.NETWORK_TIMEOUT_IN_SEC, TimeUnit.SECONDS)
-                    .writeTimeout(AppConstants.NETWORK_TIMEOUT_IN_SEC, TimeUnit.SECONDS)
-                    .readTimeout(AppConstants.NETWORK_TIMEOUT_IN_SEC, TimeUnit.SECONDS)
-
-            retrofit = Retrofit.Builder()
-                    .baseUrl(BuildConfig.BASE_URL)
-                    .client(NetworkUtils.getHttpClient(client!!))
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .build()
-
-        } else {
-            retrofit = Retrofit.Builder()
-                    .baseUrl(BuildConfig.BASE_URL)
-                    .client(NetworkUtils.httpClient)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .build()
-        }
-
-        return retrofit
+        return Retrofit.Builder()
+                .baseUrl(BuildConfig.BASE_URL)
+                .client(NetworkUtils.httpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
     }
 
     @Provides

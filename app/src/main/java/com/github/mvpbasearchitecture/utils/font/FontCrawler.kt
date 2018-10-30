@@ -27,7 +27,7 @@ import android.widget.TextView
  * Created by gk
  */
 
-class FontChangeCrawler {
+class FontCrawler {
     private var typeface: Typeface? = null
 
     constructor(typeface: Typeface) {
@@ -35,7 +35,7 @@ class FontChangeCrawler {
     }
 
     constructor(assets: AssetManager, assetsFontFileName: String) {
-        typeface = TypefaceHelper.get(assets, assetsFontFileName)
+        typeface = CustomTypeface[assets, assetsFontFileName]
     }
 
     fun replaceFonts(viewTree: ViewGroup) {

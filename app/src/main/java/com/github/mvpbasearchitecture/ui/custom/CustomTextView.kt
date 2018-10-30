@@ -19,7 +19,7 @@ import android.content.Context
 import android.support.v7.widget.AppCompatTextView
 import android.util.AttributeSet
 
-import com.github.mvpbasearchitecture.utils.font.CustomFontHelper
+import com.github.mvpbasearchitecture.utils.font.CustomFont
 
 /**
  * A Custom text view
@@ -31,10 +31,10 @@ class CustomTextView : AppCompatTextView {
     constructor(context: Context) : super(context)
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        CustomFontHelper.setCustomFont(this, context, attrs)
+        CustomFont.setCustomFont(this, context, attrs)
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {
-        CustomFontHelper.setCustomFont(this, context, attrs)
+        CustomFont.setCustomFont(this, context, attrs)
     }
 }
