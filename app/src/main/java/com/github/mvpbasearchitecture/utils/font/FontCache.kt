@@ -21,26 +21,29 @@ import android.graphics.Typeface
 import java.util.Hashtable
 
 /**
- * Helper function to cache font
+ * Helps in Caching font
  *
  * Created by gk
  */
 
-object FontCache {
+class FontCache {
 
-    private val fontCache = Hashtable<String, Typeface>()
+    companion object {
+        private val fontCache = Hashtable<String, Typeface>()
 
-    fun get(name: String, context: Context): Typeface? {
-        var tf: Typeface? = fontCache[name]
-        if (tf == null) {
-            try {
-                tf = Typeface.createFromAsset(context.assets, name)
-            } catch (e: Exception) {
-                return null
+        fun get(name: String, context: Context): Typeface? {
+            var tf: Typeface? = fontCache[name]
+            if (tf == null) {
+                try {
+                    tf = Typeface.createFromAsset(context.assets, name)
+                } catch (e: Exception) {
+                    return null
+                }
+
+                fontCache[name] = tf
             }
-
-            fontCache[name] = tf
+            return tf
         }
-        return tf
     }
+
 }

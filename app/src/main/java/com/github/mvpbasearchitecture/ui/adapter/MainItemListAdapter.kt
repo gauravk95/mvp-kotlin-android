@@ -48,9 +48,7 @@ class MainItemListAdapter(
         holder.image.loadImageFromLink(item.imageLink)
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount(): Int = items.size
 
     /**
      * View Holder for recycler view.
