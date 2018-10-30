@@ -18,8 +18,8 @@ package com.github.mvpbasearchitecture.di.module
 import com.github.mvpbasearchitecture.data.source.db.AppDatabase
 import com.github.mvpbasearchitecture.data.source.db.AppDbOpenHelper
 import com.github.mvpbasearchitecture.data.source.repository.local.AppLocalDataSource
-import com.github.mvpbasearchitecture.data.source.prefs.AppPreferencesHelper
-import com.github.mvpbasearchitecture.data.source.prefs.PreferencesHelper
+import com.github.mvpbasearchitecture.data.source.prefs.AppPreferences
+import com.github.mvpbasearchitecture.data.source.prefs.Preferences
 import com.github.mvpbasearchitecture.data.source.repository.remote.AppRemoteDataSource
 import com.github.mvpbasearchitecture.data.source.repository.AppDataRepository
 import com.github.mvpbasearchitecture.data.source.repository.AppDataSource
@@ -86,8 +86,8 @@ class DataModule {
 
     @Provides
     @Singleton
-    internal fun providePreferencesHelper(appPreferencesHelper: AppPreferencesHelper): PreferencesHelper {
-        return appPreferencesHelper
+    internal fun providePreferencesHelper(appPreferences: AppPreferences): Preferences {
+        return appPreferences
     }
 
 }

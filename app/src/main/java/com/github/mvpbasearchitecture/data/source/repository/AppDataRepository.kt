@@ -18,7 +18,7 @@ package com.github.mvpbasearchitecture.data.source.repository
 import android.support.annotation.VisibleForTesting
 
 import com.github.mvpbasearchitecture.data.models.local.Item
-import com.github.mvpbasearchitecture.data.source.prefs.PreferencesHelper
+import com.github.mvpbasearchitecture.data.source.prefs.Preferences
 import com.github.mvpbasearchitecture.di.Local
 import com.github.mvpbasearchitecture.di.Remote
 
@@ -37,7 +37,7 @@ import io.reactivex.Flowable
 class AppDataRepository @Inject
 constructor(@param:Remote private val mRemoteAppDataSource: AppDataSource,
             @param:Local private val mLocalAppDataSource: AppDataSource,
-            private val mPreferenceHelper: PreferencesHelper) : AppRepository {
+            private val mPreference: Preferences) : AppRepository {
 
     @VisibleForTesting
     internal var mCachedItemList: List<Item>? = null

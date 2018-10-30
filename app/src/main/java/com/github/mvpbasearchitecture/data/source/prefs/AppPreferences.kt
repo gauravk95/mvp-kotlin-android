@@ -21,6 +21,15 @@ import android.content.SharedPreferences
 import com.github.mvpbasearchitecture.di.ApplicationContext
 import com.github.mvpbasearchitecture.di.PreferenceInfo
 
+import com.github.mvpbasearchitecture.utils.ext.getBooleanSharedPref
+import com.github.mvpbasearchitecture.utils.ext.getIntSharedPref
+import com.github.mvpbasearchitecture.utils.ext.getStringSharedPref
+import com.github.mvpbasearchitecture.utils.ext.getLongSharedPref
+import com.github.mvpbasearchitecture.utils.ext.setBooleanSharedPref
+import com.github.mvpbasearchitecture.utils.ext.setIntSharedPref
+import com.github.mvpbasearchitecture.utils.ext.setStringSharedPref
+import com.github.mvpbasearchitecture.utils.ext.setLongSharedPref
+
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -31,42 +40,42 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class AppPreferencesHelper @Inject
+class AppPreferences @Inject
 constructor(@ApplicationContext context: Context,
-            @PreferenceInfo prefFileName: String) : PreferencesHelper {
+            @PreferenceInfo prefFileName: String) : Preferences {
 
     private val mPrefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
 
     override fun getBoolean(key: String): Boolean {
-        return PrefsUtils.getBooleanSharedPref(mPrefs, key)
+        return mPrefs.getBooleanSharedPref(key)
     }
 
     override fun getLong(key: String): Long {
-        return PrefsUtils.getLongSharedPref(mPrefs, key)
+        return mPrefs.getLongSharedPref(key)
     }
 
     override fun getInt(key: String): Int {
-        return PrefsUtils.getIntSharedPref(mPrefs, key)
+        return mPrefs.getIntSharedPref(key)
     }
 
     override fun getString(key: String): String {
-        return PrefsUtils.getStringSharedPref(mPrefs, key)
+        return mPrefs.getStringSharedPref(key)
     }
 
     override fun setBoolean(key: String, value: Boolean) {
-        PrefsUtils.setBooleanSharedPref(mPrefs, key, value)
+        mPrefs.setBooleanSharedPref(key, value)
     }
 
     override fun setLong(key: String, value: Long) {
-        PrefsUtils.setLongSharedPref(mPrefs, key, value)
+        mPrefs.setLongSharedPref(key, value)
     }
 
     override fun setInt(key: String, value: Int) {
-        PrefsUtils.setIntSharedPref(mPrefs, key, value)
+        mPrefs.setIntSharedPref(key, value)
     }
 
     override fun getString(key: String, value: String) {
-        PrefsUtils.setStringSharedPref(mPrefs, key, value)
+        mPrefs.setStringSharedPref(key, value)
     }
 
 }

@@ -19,7 +19,7 @@ package com.github.mvpbasearchitecture.data.source.prefs
  * Created by gk.
  */
 
-interface PreferencesHelper {
+interface Preferences {
 
     //GENERIC
     fun getBoolean(key: String): Boolean
