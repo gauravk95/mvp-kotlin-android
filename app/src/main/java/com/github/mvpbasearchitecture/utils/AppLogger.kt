@@ -64,5 +64,5 @@ object AppLogger {
         if (isDebugMode)
             Log.v(tag, msg)
     }
-
+    
 }
